@@ -1,11 +1,11 @@
 import React from 'react';
 
-const Login = () => {
+const RightAside = () => {
     return (
         <div>
-            
+            RightAside
         </div>
     );
 };
 
-export default Login;
+export default RightAside;
