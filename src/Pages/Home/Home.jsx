@@ -4,17 +4,25 @@ import Navbar from '../../Components/Navbar/Navbar';
 import Header from '../../Components/Header';
 import LeftAside from '../../Components/HomeLayout/LeftAside';
 import RightAside from '../../Components/HomeLayout/RightAside';
+import LatestNews from '../../Components/HomeLayout/LatestNews';
 
 const Home = () => {
     return (
         <div>
             {/* Header Section */}
-           <header>
+           <header className='pt-5'>
             <Header></Header>
            </header>
-         
+         {/* Latest News */}
+         <section className='w-11/12 mx-auto pt-5'>
+            <LatestNews></LatestNews>
+         </section>
+         {/* Navbar Section */}
+         <section>
+            <Navbar></Navbar>
+         </section>
            {/* Main Section */}
-           <main className='w-11/12 mx-auto my-3 grid grid-cols-12'>
+           <main className='w-11/12 mx-auto my-3 grid grid-cols-12 gap-3'>
             <aside className='col-span-3'>
                 <LeftAside></LeftAside>
             </aside>
