@@ -1,7 +1,25 @@
-import React from "react";
+import React, { use } from "react";
 import { Link } from "react-router";
+import { AuthContext } from "../../Provider/AuthProvider";
 
 const Login = () => {
+  const{signIn,setUser}=use(AuthContext)
+  const handleLogin =(e)=>{
+    e.preventDefault();
+    const email=e.target.email.value;
+    const password=e.target.password.value;
+    console.log(email,password);
+    signIn(email,password)
+    .then((userCredential) => {
+      // Signed in 
+      const user = userCredential.user;
+      setUser(user)
+    })
+    .catch((error) => {
+      
+      alert(error)
+    });
+  }
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-100">
       <div className="bg-white p-10 rounded-lg shadow-md w-full max-w-md">
@@ -10,14 +28,14 @@ const Login = () => {
         </h2>
         <div className="border-t border-gray-200 mb-6"></div>
 
-        <form className="space-y-5">
+        <form onSubmit={handleLogin} className="space-y-5">
           <div>
             <label htmlFor="email" className="block font-semibold mb-1">
               Email address
             </label>
             <input
               type="email"
-              id="email"
+              name="email"
               placeholder="Enter your email address"
               className="w-full px-4 py-3 border rounded bg-gray-100"
             />
@@ -28,7 +46,7 @@ const Login = () => {
             </label>
             <input
               type="password"
-              id="password"
+              name="password"
               placeholder="Enter your password"
               className="w-full px-4 py-3 border rounded bg-gray-100 focus:outline-none focus:ring-2 focus:ring-black"
             />

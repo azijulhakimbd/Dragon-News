@@ -1,6 +1,28 @@
-import React from "react";
+import React, { use } from "react";
+import { AuthContext } from "../../Provider/AuthProvider";
 
 const Register = () => {
+  const {createUser, setUser}=use(AuthContext)
+  const handleRegister=(e)=>{
+    e.preventDefault();
+    const name=e.target.name.value;
+    const photo=e.target.photo.value;
+    const email=e.target.email.value;
+    const password=e.target.password.value;
+    console.log(name,photo,email,password);
+    createUser(email,password)
+    .then((userCredential) => {
+      // Signed up 
+      const user=userCredential.user;
+      setUser(user)
+      
+    })
+    .catch((error) => {
+      console.log(error);
+      
+      // ..
+    });
+  }
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-100">
       <div className="bg-white p-10 rounded-lg shadow-md w-full max-w-md">
@@ -9,7 +31,7 @@ const Register = () => {
         </h2>
         <div className="border-t border-gray-200 mb-6"></div>
 
-        <form className="space-y-5">
+        <form onSubmit={handleRegister} className="space-y-5">
           <div>
             <label htmlFor="name" className="block font-semibold mb-1">
               Your Name
@@ -17,6 +39,7 @@ const Register = () => {
             <input
               type="text"
               id="name"
+              name="name"
               placeholder="Enter your name"
               className="w-full px-4 py-3 border rounded bg-gray-100 focus:outline-none focus:ring-2 focus:ring-black"
             />
@@ -28,7 +51,7 @@ const Register = () => {
             </label>
             <input
               type="text"
-              id="photo"
+              name="photo"
               placeholder="Enter your photo URL"
               className="w-full px-4 py-3 border rounded bg-gray-100 focus:outline-none focus:ring-2 focus:ring-black"
             />
@@ -40,7 +63,7 @@ const Register = () => {
             </label>
             <input
               type="email"
-              id="email"
+              name="email"
               placeholder="Enter your email address"
               className="w-full px-4 py-3 border rounded bg-gray-100 focus:outline-none focus:ring-2 focus:ring-black"
             />
@@ -52,7 +75,7 @@ const Register = () => {
             </label>
             <input
               type="password"
-              id="password"
+              name="password"
               placeholder="Enter your password"
               className="w-full px-4 py-3 border rounded bg-gray-100 focus:outline-none focus:ring-2 focus:ring-black"
             />

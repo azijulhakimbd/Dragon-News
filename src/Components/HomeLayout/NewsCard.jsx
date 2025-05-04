@@ -17,7 +17,7 @@ const NewsCard = ({ news }) => {
   } = news;
 
   return (
-    <div className="card bg-white shadow rounded-lg p-4 space-y-3">
+    <div className="card h-150 bg-white shadow rounded-lg p-4 space-y-3">
       {/* Header */}
       <div className="flex justify-between items-start">
         <div className="flex items-center gap-3">
@@ -43,7 +43,7 @@ const NewsCard = ({ news }) => {
       </h2>
 
       {/* Image */}
-      <figure className="w-full h-56 overflow-hidden rounded-md">
+      <figure className="w-full h-150 overflow-hidden rounded-md">
         <img
           src={image_url}
           alt={title}

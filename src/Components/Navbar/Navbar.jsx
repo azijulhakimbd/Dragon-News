@@ -1,10 +1,14 @@
 import React from 'react';
 import { Link, NavLink } from 'react-router';
 
+
 const Navbar = () => {
+   
     return (
        <div className='w-11/12 mx-auto flex justify-between p-8 items-center'>
-       <div className=''></div>
+       <div className=''> Username: 
+        
+       </div>
        {/* Navlink */}
        <div className='flex gap-5 text-accent'>
         <NavLink to={'/'}>Home</NavLink>
